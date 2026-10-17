@@ -129,6 +129,31 @@ nav li a:hover {
     padding: 2.5em 0.5em;
 }
 
+/* Filtering */
+.filterWrapper {
+    display: flex;
+    padding: 1.5em 0.5em;
+    gap: 1em;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5em;
+}
+
+.filterBTN {
+    background-color: var(--crust);
+    color: var(--text);
+    outline: solid 2px var(--mauve);
+}
+
+.filterBTN.selected {
+    background-color: var(--mauve);
+    color: var(--crust);
+}
+
+/* Skill Cards */
 .skillCard {
     display: grid;
     background-color: var(--surface0);
@@ -140,12 +165,14 @@ nav li a:hover {
     grid-template-areas:
         "course course course"
         "author authToPrice price"
+        "category category category"
         "description description description"
         "bookNow bookNow bookNow";
 }
 
 .course { grid-area: course; }
 .author { grid-area: author; }
+.category { grid-area: category; ;}
 .description { grid-area: description; }
 
 .bookNow {
