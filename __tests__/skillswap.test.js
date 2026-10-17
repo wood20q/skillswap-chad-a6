@@ -1,4 +1,4 @@
-const filterSkillsByCategory = require('../skillswap-functions')
+const { filterSkillsByCategory } = require('../skillswap-functions')
 
 const skills = [
   { title: 'Python Tutoring', category: 'Programming', price: 20 },
