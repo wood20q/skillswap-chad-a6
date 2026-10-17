@@ -26,9 +26,26 @@ describe('filterSkillsByCategory', () => {
         ]);
     });
 
-    test(`filter by category that doesn't exist`, () => {
+    test(`No matching skills`, () => {
         const result = filterSkillsByCategory(skills, 'Cooking');
         expect(result).toEqual([]);
     });
 })
 
+describe('calculateTotalCost', () => {
+    test('Standard calculation', () => {
+        expect(calculateTotalCost(20, 2)).toEqual(40)
+    })
+
+    test('Free session', () => {
+        expect(calculateTotalCost(0, 3)).toEqual(0)
+    })
+
+    test('Decimal hours', () => {
+        expect(calculateTotalCost(25, 1.5)).toEqual(37.5)
+    })
+
+    test('Zero hours', () => {
+        expect(calculateTotalCost(20, 0)).toEqual(0)
+    })
+})
