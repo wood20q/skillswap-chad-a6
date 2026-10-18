@@ -38,7 +38,27 @@
                     <button class="filterBTN" id="filterBTNProgramming" onclick="handleFilter('Programming')">Programming</button>
                     <button class="filterBTN" id="filterBTNMusic" onclick="handleFilter('Music')">Music</button>
                     <button class="filterBTN" id="filterBTNCareer" onclick="handleFilter('Career')">Career</button>
+                    <button class="filterBTN" id="filterBTNAdvanced" onclick="handleFilter('Advanced')">Advanced</button>
                 </div>
+            </div>
+            <div class="advancedFilterWrapper" id="advancedFilterWrapper">
+                <h1>Advanced Filtering</h1>
+                <form class="advancedFilterBox" id="advancedFilterBox">
+                    <div class="category">
+                        <label for="categorySelector">Category:</label>
+                        <select name="category" id="categorySelector">
+                            <option value="All">All</option>
+                            <option value="Programming">Programming</option>
+                            <option value="Music">Music</option>
+                            <option value="Career">Career</option>
+                        </select>
+                    </div>
+                    <div class="maxPrice">
+                        <label for="maxPriceInput">Max Price/Hour:</label>
+                        <input type="number" name="maxPrice" id="maxPriceInput" step="0.01" required>
+                    </div>
+                    <button type="submit" id="findButton">Find</button>
+                </form>
             </div>
             <div class="featuredSkillsWrapper" id="skillsGrid">
                 

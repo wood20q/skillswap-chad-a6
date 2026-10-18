@@ -15,6 +15,11 @@ function calculateTotalCost(cost, time) {
     return (cost * time)
 }
 
+function matchSkillsToUser(userNeeds, skillList) {
+    const categoryFilteredList = filterSkillsByCategory(skillList, userNeeds.category)
+    return categoryFilteredList.filter(skill => skill.price <= userNeeds.maxPrice)
+}
+
 // Script.js
 const SKILLSGRID = document.getElementById("skillsGrid")
 
@@ -44,19 +49,23 @@ function handleFilter(type) {
     const filterBTNProgramming = document.getElementById("filterBTNProgramming")
     const filterBTNMusic = document.getElementById("filterBTNMusic")
     const filterBTNCareer = document.getElementById("filterBTNCareer")
+    const filterBTNAdvanced = document.getElementById("filterBTNAdvanced")
+    const advancedFilteringSection = document.getElementById("advancedFilterWrapper")
 
-    const filterList = [filterBTNAll, filterBTNProgramming, filterBTNMusic, filterBTNCareer]
+    const filterList = [filterBTNAll, filterBTNProgramming, filterBTNMusic, filterBTNCareer, filterBTNAdvanced]
     for (let i = 0; i < filterList.length; i++) {
         filterList[i].classList.remove("selected")
         if (filterList[i].textContent == type) filterList[i].classList.add("selected")
     }
 
-    const newSkillList = filterSkillsByCategory(SKILLS, type)
+    const newSkillList = filterSkillsByCategory(SKILLS, (type === "Advanced" ? "All" : type))
     loadFeaturedSkills(newSkillList)
+
+    advancedFilteringSection.style.display = (type === "Advanced" ? "grid" : "none")
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadFeaturedSkills(filterSkillsByCategory(SKILLS, "All"))
+    handleFilter("All")
     
     document.getElementById('costCalculatorWrapper').addEventListener('submit', (event) => {
         event.preventDefault()
@@ -67,5 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         costLabel.classList.remove('disabled')
         costLabel.textContent = `Cost: $${calculateTotalCost(hourlyCost, hours)}`
+    })
+
+    document.getElementById("advancedFilterBox").addEventListener('submit', (event) => {
+        event.preventDefault()
+
+        const category = document.getElementById('categorySelector').value
+        const price = document.getElementById('maxPriceInput').value
+        console.log(`${category} | ${price}`)
+
+        loadFeaturedSkills(matchSkillsToUser({category: category, maxPrice: price}, SKILLS))
     })
 })
