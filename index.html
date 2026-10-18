@@ -43,6 +43,22 @@
             <div class="featuredSkillsWrapper" id="skillsGrid">
                 
             </div>
+
+            <div class="costCalculatorSection">
+                <h1 id="costTitle">Cost Calculator:</h1>
+                <h2 class="disabled" id="costLabel">Cost</h2>
+                <form class="costCalculatorWrapper" id="costCalculatorWrapper">
+                    <div class="hourlyCostWrapper">
+                        <label for="hourlyCost">Hourly Cost:</label>
+                        <input type="number" name="hourlyCost" id="hourlyCost" required>
+                    </div>
+                    <div class="hoursWrapper">
+                        <label for="hours">Total Hours:</label>
+                        <input type="number" name="hours" id="hours" required>
+                    </div>
+                    <button type="submit" id="calculateButton">Calculate</button>
+                </form>
+            </div>
         </div>
 
     </main>

@@ -11,6 +11,10 @@ function filterSkillsByCategory (skillList, category) {
     else return skillList.filter(skill => skill.category === category)
 }
 
+function calculateTotalCost(cost, time) {
+    return (cost * time)
+}
+
 // Script.js
 const SKILLSGRID = document.getElementById("skillsGrid")
 
@@ -53,4 +57,15 @@ function handleFilter(type) {
 
 document.addEventListener("DOMContentLoaded", () => {
     loadFeaturedSkills(filterSkillsByCategory(SKILLS, "All"))
+    
+    document.getElementById('costCalculatorWrapper').addEventListener('submit', (event) => {
+        event.preventDefault()
+    
+        const hourlyCost = document.getElementById('hourlyCost').value
+        const hours = document.getElementById('hours').value
+        const costLabel = document.getElementById('costLabel')
+
+        costLabel.classList.remove('disabled')
+        costLabel.textContent = `Cost: $${calculateTotalCost(hourlyCost, hours)}`
+    })
 })

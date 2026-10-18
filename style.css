@@ -45,6 +45,8 @@ body {
     min-height: 100dvh;
 }
 
+.disabled { display: none !important;}
+
 /* General Styling */
 a {
     text-decoration: none;
@@ -172,7 +174,7 @@ nav li a:hover {
 
 .course { grid-area: course; }
 .author { grid-area: author; }
-.category { grid-area: category; ;}
+.category { grid-area: category; }
 .description { grid-area: description; }
 
 .bookNow {
@@ -195,6 +197,51 @@ nav li a:hover {
     corner-shape: scoop;
     text-align: center;
     padding: 0.25em 1em;
+}
+
+/* Cost Calculator */
+.costCalculatorSection {
+    display: grid;
+    background-color: var(--surface0);
+    padding: 1em;
+    border-radius: 25px;
+    gap: 1em;
+}
+
+.costCalculatorWrapper {
+    display: grid;
+    gap: 1em;
+    grid-template-areas:
+        "hourlyCost hours"
+        "submit submit";
+}
+
+.hourlyCostWrapper {
+    display: flex;
+    grid-area: hourlyCost;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+}
+
+.hoursWrapper {
+    display: flex;
+    grid-area: hours;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+}
+
+#calculateButton {grid-area: submit; justify-self: center;}
+
+.costCalculatorSection input {
+    background-color: var(--surface0);
+    color: var(--text);
+    padding: 0.25em 1em;
+    border-radius: 100vh;
+    border: 3px solid var(--mauve);
 }
 
 /* Footer */
