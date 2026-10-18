@@ -140,7 +140,7 @@ nav li a:hover {
 
 .filters {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 0.5em;
 }
 
@@ -153,6 +153,42 @@ nav li a:hover {
 .filterBTN.selected {
     background-color: var(--mauve);
     color: var(--crust);
+}
+
+/* Advanced Filter */
+.advancedFilterWrapper {
+    display: grid;
+    background-color: var(--surface0);
+    padding: 1em;
+    border-radius: 25px;
+}
+
+.advancedFilterBox {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.category,
+.maxPrice {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    flex: 1 1;
+}
+
+#findButton {
+    flex: 0 0;
+    padding: 0.5em 2em;
+}
+
+.advancedFilterBox input,
+.advancedFilterBox select {
+    background-color: var(--surface0);
+    color: var(--text);
+    padding: 0.25em 1em;
+    border-radius: 100vh;
+    border: 3px solid var(--mauve);
 }
 
 /* Skill Cards */
